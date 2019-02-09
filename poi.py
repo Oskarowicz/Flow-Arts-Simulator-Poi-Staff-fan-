@@ -3,6 +3,7 @@ import time
 
 
 tr2 = tr.Turtle()
+shadow = False
 
 def setup():
     tr.setup(width=1000, height=700, startx=0, starty=0)
@@ -76,17 +77,6 @@ def poi(number, color):
     tr.left(number)
     tr.dot(10)
     tr.forward(130)
-
-#def shadow():
-    #SHADOW
-    poi_color_copy = tr.color()
-    shadow_color = (poi_color_copy[0][0]+0.3, poi_color_copy[0][1]+0.3, poi_color_copy[0][2]+0.3)
-    tr2.color(shadow_color)
-    poi_position = tr.pos()
-    tr2.setpos(poi_position)
-    tr2.dot(18)
-    tr.dot(30)
-    tr.up()
 
 def poi_mode (number, person, mode, poispeed, rot):
     if mode == 0:       #longarm
@@ -182,35 +172,8 @@ def update_position(i):
 setup()
 fps = 50
 time_for_cycle = 5.000 #sek
-
-shadow = False
-update_view = True
-cycles = 1
-
-tim0 = time.clock()
-dtim = 0.0
-
 tick = 1.000/fps
 while True:
-
-    """
-    while dtim > time_step:
-        #licz_krok_fizyki(time_step)
-        dtim -= time_step
-        update_view = True
-    """
-
-    tim1 = time.clock()
-    dtim = tim1-tim0
-    tim0 = tim1
-    print(dtim)
-    print(tick)
-    print(tick*fps)
-    print("               ")
-    if tick - (dtim-time_for_cycle)/(fps*time_for_cycle) > 0:
-        tick -= (dtim-time_for_cycle)/(fps*time_for_cycle)
-    else:
-        tick = 0
 
     for i in range(int(time_for_cycle*fps)):
 
